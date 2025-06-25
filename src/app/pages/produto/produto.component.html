@@ -1,1 +1,15 @@
-<p>produto works!</p>
+<label for="">Add prod</label>
+
+<input type="text" [(ngModel)]="valorInput" (keyup.enter)="adiconarProd()">
+@if(mostarEsconderContador){
+<div>
+  <app-carrinho />
+</div>
+
+}
+
+
+
+<button (click)="mostarEsconderContador = !mostarEsconderContador">
+  mostar / esconder contador
+</button>
