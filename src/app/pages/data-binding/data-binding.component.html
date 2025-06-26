@@ -77,12 +77,23 @@
 
 
 </section>
-<section class="input-outpout-properties">
+
+<!-- <section class="input-outpout-properties">
   <article>
     <h3>Input/Output Properties</h3>
 
     <app-input-property [nomeDoCurso]="nomeDoCurso" [marcao]="nomePessoa" />
     <img [src]="urlImg">
 
+  </article>
+</section> -->
+
+<section class="input-outpout-properties">
+  <article>
+    <h3>Life cicle</h3>
+
+    <app-life-cicle [valorInicial]="valor" *ngIf="!deletarCompoente"></app-life-cicle>
+    <button (click)="mudarValor()">mudar valor</button>
+    <button (click)="DeletarComponentefunc()">apagar comp</button>
   </article>
 </section>
