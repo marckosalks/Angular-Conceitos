@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-data-binding',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './data-binding.component.html',
   styleUrl: './data-binding.component.scss',
 })
@@ -13,6 +14,8 @@ export class DataBindingComponent {
 
   valorDigitadio: string = '';
   valorSalvo: string = '';
+
+  nome = 'abc';
 
   getNumber() {
     return 1;

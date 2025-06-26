@@ -40,7 +40,7 @@
     </div>
   </article> -->
 
-  <section>
+  <!-- <section>
     <article>
       <h3>Event Bindins</h3>
 
@@ -52,6 +52,24 @@
       <div>
         <p>Valor digitado: {{valorDigitadio}}</p>
         <p>Valor digitado: {{valorSalvo}}</p>
+      </div>
+    </article>
+  </section> -->
+
+  <section>
+    <article>
+      <h3>Two way Bindins</h3>
+
+
+
+      <input type="text" (input)="nome = campoInput.value" [value]="nome" #campoInput>
+
+      <input type="text" (input)="nome = campoInput.value" [value]="nome" #campoInput>
+
+      <input type="text" [(ngModel)]="nome" (ngModelChange)="nome">
+
+      <div>
+        <p>{{nome}}</p>
       </div>
     </article>
   </section>
