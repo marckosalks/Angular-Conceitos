@@ -5,6 +5,8 @@ import { CursosComponent } from './components/cursos/cursos.component';
 import { ProdutoComponent } from './pages/produto/produto.component';
 import { DataBindingComponent } from './pages/data-binding/data-binding.component';
 import { LifeCicleComponent } from './pages/life-cicle/life-cicle.component';
+import { NgSwitchComponent } from './components/ng-switch/ng-switch.component';
+import { DiretivasComponent } from './pages/diretivas/diretivas.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,4 +15,5 @@ export const routes: Routes = [
   { path: 'produto', component: ProdutoComponent },
   { path: 'binding', component: DataBindingComponent },
   { path: 'lifeCicle', component: LifeCicleComponent },
+  { path: 'diretivas', component: DiretivasComponent },
 ];
