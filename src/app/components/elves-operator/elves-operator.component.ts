@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './elves-operator.component.html',
-  styleUrl: './elves-operator.component.scss'
+  styleUrl: './elves-operator.component.scss',
 })
 export class ElvesOperatorComponent {
   transportadora: any = {

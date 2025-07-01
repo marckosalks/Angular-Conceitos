@@ -7,6 +7,7 @@ import { DataBindingComponent } from './pages/data-binding/data-binding.componen
 import { LifeCicleComponent } from './pages/life-cicle/life-cicle.component';
 import { NgSwitchComponent } from './components/ng-switch/ng-switch.component';
 import { DiretivasComponent } from './pages/diretivas/diretivas.component';
+import { SinalsComponent } from './pages/sinals/sinals.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,4 +17,5 @@ export const routes: Routes = [
   { path: 'binding', component: DataBindingComponent },
   { path: 'lifeCicle', component: LifeCicleComponent },
   { path: 'diretivas', component: DiretivasComponent },
+  { path: 'signal', component: SinalsComponent },
 ];
