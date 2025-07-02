@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ApiService } from '../../services/api.service';
+import { TesteSeService } from '../../../services/teste-se.service';
 
 @Component({
   selector: 'app-async-comp',
@@ -10,7 +10,7 @@ import { ApiService } from '../../services/api.service';
   styleUrl: './async-comp.component.scss',
 })
 export class AsyncCompComponent {
-  private apiService = inject(ApiService);
+  private testeSeService = inject(TesteSeService);
 
-  protected fuits$ = this.apiService.getFruits();
+  protected fuits$ = this.testeSeService.getFruits();
 }
