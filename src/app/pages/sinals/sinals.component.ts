@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  Injector,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { single } from 'rxjs';
 
 @Component({
@@ -9,17 +16,16 @@ import { single } from 'rxjs';
   templateUrl: './sinals.component.html',
   styleUrl: './sinals.component.scss',
 })
-export class SinalsComponent {
+export class SinalsComponent implements OnInit {
   // declarar var do tipo signal
   // protected exemploSignalCount = signal<Pessoa>({nome:'Marcos',  idade: 20});
   protected exemploSignalCount = signal(0);
   protected showCount = signal(true);
 
-
   // quando ele processa, assume exemploSignalCount como dependencia
   // toda vez que o exemploSignalCount for modificado ele notifica
   protected computedExemplo = computed(() => {
-    console.log('COMPUTED ATIVAR');
+    // console.log('COMPUTED ATIVAR');
 
     if (this.showCount()) {
       return `${this.exemploSignalCount()} computed!`;
@@ -27,6 +33,20 @@ export class SinalsComponent {
       return ' Nada';
     }
   });
+
+  // usando dentro do construtor
+  constructor(private injector: Injector) {
+    // effect(()=>{
+    //    console.log(`ALTERAÇÃO EFFECT: ${this.showCount()}`);
+    // })
+  }
+
+  // usar effect fora do construtor
+  ngOnInit(): void {
+    effect(()=>{
+       console.log(`ALTERAÇÃO EFFECT: ${this.showCount()}`);
+    }, {injector: this.injector})
+  }
 
   executar() {
     this.exemploSignalCount.update((atual) => atual + 1);
