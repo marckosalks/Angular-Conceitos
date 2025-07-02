@@ -7,12 +7,13 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { single } from 'rxjs';
+import { OnPushComponent } from '../../components/on-push/on-push.component';
+
 
 @Component({
   selector: 'app-sinals',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, OnPushComponent],
   templateUrl: './sinals.component.html',
   styleUrl: './sinals.component.scss',
 })
