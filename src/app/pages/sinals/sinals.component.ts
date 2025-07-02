@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
+import { single } from 'rxjs';
 
 @Component({
   selector: 'app-sinals',
@@ -8,19 +9,29 @@ import { Component, computed, signal } from '@angular/core';
   templateUrl: './sinals.component.html',
   styleUrl: './sinals.component.scss',
 })
-
-
 export class SinalsComponent {
-
   // declarar var do tipo signal
   // protected exemploSignalCount = signal<Pessoa>({nome:'Marcos',  idade: 20});
   protected exemploSignalCount = signal(0);
+  protected showCount = signal(true);
 
-  protected computedExemplo = computed(()=> `${this.exemploSignalCount()} computed!`)
+
+  // quando ele processa, assume exemploSignalCount como dependencia
+  // toda vez que o exemploSignalCount for modificado ele notifica
+  protected computedExemplo = computed(() => {
+    console.log('COMPUTED ATIVAR');
+
+    if (this.showCount()) {
+      return `${this.exemploSignalCount()} computed!`;
+    } else {
+      return ' Nada';
+    }
+  });
 
   executar() {
-    console.log('passei pelo computed');
-    this.exemploSignalCount.update(atual => atual +1);
+    this.exemploSignalCount.update((atual) => atual + 1);
+    // console.log('passei pelo computed');
+    // this.exemploSignalCount.update(atual => atual +1);
 
     // SET: define o signal para um novo valor absoluto
     // this.exemploSignalCount.set(20);
@@ -30,13 +41,17 @@ export class SinalsComponent {
     //   return { ...atual, idade: 24}
 
     // });
-
   }
 
   // A cada mudança na pagina ele chama o aj novamente
-  chamaOAjota(){
-    console.log('chama o aj');
-    return 'chama o aj';
-  }
+  // chamaOAjota() {
+  //   console.log('chama o aj');
+  //   return 'chama o aj';
+  // }
 
+  ShowCoutFunc() {
+    if (this.showCount) {
+      this.showCount.update((atual) => !atual);
+    }
+  }
 }

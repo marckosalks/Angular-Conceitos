@@ -1,16 +1,23 @@
 <p>
-  Nosso signal :{{exemploSignalCount() | json }}
+  Nosso signal: {{exemploSignalCount() | json }}
 </p>
 
 
 <p>
-  Nosso signal :{{computedExemplo() }}
+  Nosso Computed: {{computedExemplo() }}
 </p>
 
 
 <!-- nunca faça isso use um signal -->
-<p>
+<!-- <p>
   Nossa função {{ chamaOAjota() }}
+</p> -->
+
+
+
+<p>
+  Show Count: {{showCount()}}
 </p>
 
 <button (click)="executar()">Mudar</button>
+<button (click)="ShowCoutFunc()">Mostrar conut</button>
