@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { CursosService } from './cursos.service';
+// import { CursosService } from './cursos.service';
+
+/* deconmentar quando for usar - devolver para o service*/
+// , CursosService
+// import { CursosService } from './components/cursos/cursos.service';
+
 
 @Component({
   selector: 'app-cursos',
@@ -10,15 +15,21 @@ import { CursosService } from './cursos.service';
   styleUrl: './cursos.component.scss',
 })
 export class CursosComponent implements OnInit {
-  cursos: string[] = [];
-  cursosServices: CursosService;
+  // cursos: string[] = [];
+  // cursosServices: CursosService;
 
-  constructor(private cursosService: CursosService) {
-    // this.cursosServices = new CursosService();
-    this.cursosServices = cursosService;
-  }
+  // constructor(private cursosService: CursosService) {
+  //   // this.cursosServices = new CursosService();
+  //   this.cursosServices = cursosService;
+  // }
+
+  // ngOnInit(): void {
+  //   this.cursos = this.cursosServices.getCurusos();
+  // }
+
 
   ngOnInit(): void {
-    this.cursos = this.cursosServices.getCurusos();
+    console.log("ola");
   }
 }
+

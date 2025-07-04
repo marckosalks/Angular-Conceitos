@@ -1,6 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject, interval, take, takeUntil, map } from 'rxjs';
 import { Compras } from '../carrinho/compras.component';
 import { CarrinhoService } from '../carrinho/carrinho.service';
 import { CommonModule } from '@angular/common';
@@ -12,39 +12,33 @@ import { CommonModule } from '@angular/common';
   templateUrl: './produto.component.html',
   styleUrl: './produto.component.scss',
 })
-export class ProdutoComponent implements OnInit {
+export class ProdutoComponent implements OnInit, OnDestroy {
   valorInput = '';
   mostarEsconderContador = true;
 
-  // testePromisse = new Promise<string>((resolver, reject) => {
-  //   console.log('Promise iniciada!');
-
-  //   setInterval(() => {
-  //     resolver('Promise resolvida!!!');
-  //   }, 5000);
-  // });
-
   private carrinhoService = inject(CarrinhoService);
+  private destroy$ = new Subject<void>();
 
-  time$ = new Observable<string>((sub) => {
-    console.log('INICIANDO OBSERVABLE');
-
-    setInterval(() => {
-      sub.next('RESOLVIDO OBSERVABLE');
-    }, 5000);
-  });
+  // Observable usando RxJS interval (mais seguro)
+  time$: Observable<string> = interval(5000).pipe(
+    map(() => 'RESOLVIDO OBSERVABLE')
+  );
 
   ngOnInit(): void {
-    // this.testePromisse.then((value) => {
-    //   console.log(value);
-    // });
-
-    this.time$.subscribe((value) => console.log(value));
+    this.time$
+      .pipe(take(1), takeUntil(this.destroy$))
+      .subscribe((value) => console.log(value));
   }
 
-  adiconarProd() {
+  adiconarProd(): void {
     console.log('Valor do input: ', this.valorInput);
     this.carrinhoService.addProd(this.valorInput);
     this.valorInput = '';
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    console.log('ngOnDestroy chamado');
   }
 }

@@ -3,23 +3,30 @@ import {Component} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 
+
+//adicionar um componente diretamente no teste
 @Component({
   template: `<span appHighlight [highlightColor]="colorName"> Texto </span>`,
   standalone: true,
   imports: [HighlightDirective]
 })
+// criamos classe para nosso componente -- seria nosso component.ts
 class TestHostComponent{
-  colorName = 'blue';
+  colorName = 'red';
 }
 
 describe('HighlightDirective', () => {
-  let fixture: ComponentFixture<TestHostComponent>;
-  let component: TestHostComponent;
+  //contecto para acessar propriedades do comp
+  let fixture: ComponentFixture<TestHostComponent>
+  let component: TestHostComponent
+
+
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TestHostComponent]
+
     }).compileComponents();
+
 
     fixture = TestBed.createComponent(TestHostComponent);
     component = fixture.componentInstance;
@@ -30,16 +37,26 @@ describe('HighlightDirective', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should change background color based on directive param', () => {
-    // Arrange
-    const expectedColor = 'red';
-    component.colorName = expectedColor;
+  // it('should change background color based on directive param', () => {
+  //   // Arrange
+  //   // const expectedColor = 'red';
+  //   // component.colorName = expectedColor;
 
-    // Act
-    fixture.detectChanges();
+  //   // // Act
+  //   // fixture.detectChanges();
 
-    // Assert
-    const elementDirective = fixture.debugElement.query(By.css('span')).nativeElement as HTMLElement;
-    expect(elementDirective.style.backgroundColor).toBe(expectedColor);
+  //   // // Assert
+  //   // const elementDirective = fixture.debugElement.query(By.css('span')).nativeElement as HTMLElement;
+  //   // expect(elementDirective.style.backgroundColor).toBe(expectedColor);
+  // });
+
+  it('shoud change backgroud color based on directive param', ()=>{
+    const expectColor = 'red';
+    component.colorName = expectColor;
+
+    fixture.detectChanges()
+
+    const elementDirective =  fixture.debugElement.query(By.css('span')).nativeElement as HTMLElement;
+    expect(elementDirective.style.backgroundColor).toBe(expectColor)
   });
 });

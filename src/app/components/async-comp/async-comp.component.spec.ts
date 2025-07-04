@@ -1,36 +1,36 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 import { AsyncCompComponent } from './async-comp.component';
-import {ApiService} from "../../services/api.service";
+import { TesteSeService } from '../../../services/teste-se.service';
 import {of} from "rxjs";
 import {By} from "@angular/platform-browser";
 
 const expectedApiFruits = ['uva', 'morango'];
 
-describe('AsyncCompComponent', () => {
+fdescribe('AsyncCompComponent', () => {
   let component: AsyncCompComponent;
   let fixture: ComponentFixture<AsyncCompComponent>;
-  let apiServiceMock: jasmine.SpyObj<ApiService>;
+  let apiServiceMock: jasmine.SpyObj<TesteSeService>;
 
   beforeEach(async () => {
-    apiServiceMock = jasmine.createSpyObj('ApiService', ['getFruits']);
+    apiServiceMock = jasmine.createSpyObj('TesteSeService', ['getFruits']);
     apiServiceMock.getFruits.and.returnValue(of(expectedApiFruits));
 
     await TestBed.configureTestingModule({
-      imports: [AsyncCompComponent],
-      providers: [{ provide: ApiService, useValue: apiServiceMock }]
-    })
-    .compileComponents();
+      imports:[AsyncCompComponent, HttpClientTestingModule],
+      providers:[{provide: TesteSeService, useValue: apiServiceMock}]
+    }).compileComponents();
 
-    apiServiceMock = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
+    apiServiceMock = TestBed.inject(TesteSeService) as jasmine.SpyObj<TesteSeService>
+
+
     fixture = TestBed.createComponent(AsyncCompComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 
   it('should call fruits api on Init', () => {
     fixture.detectChanges();

@@ -8,9 +8,11 @@ export class TesteSeService {
 
   private httpClient =  inject(HttpClient);
 
+  private url: string = 'http://localhost:3000/fruits';
+
   constructor() { }
 
   getFruits() {
-    return this.httpClient.get<string[]>('http://localhost:3000/fruits');
+    return this.httpClient.get<string[]>(this.url);
   }
 }
