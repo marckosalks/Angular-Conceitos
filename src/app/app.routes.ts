@@ -8,6 +8,7 @@ import { LifeCicleComponent } from './pages/life-cicle/life-cicle.component';
 import { DiretivasComponent } from './pages/diretivas/diretivas.component';
 import { SinalsComponent } from './pages/sinals/sinals.component';
 import { TestesComponent } from './pages/testes/testes.component';
+import { RxjsComponent } from './pages/rxjs/rxjs.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,4 +20,5 @@ export const routes: Routes = [
   { path: 'diretivas', component: DiretivasComponent },
   { path: 'signal', component: SinalsComponent },
   { path: 'testes', component: TestesComponent },
+  { path: 'rxjs', component: RxjsComponent },
 ];
