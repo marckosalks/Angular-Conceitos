@@ -9,6 +9,7 @@ import { DiretivasComponent } from './pages/diretivas/diretivas.component';
 import { SinalsComponent } from './pages/sinals/sinals.component';
 import { TestesComponent } from './pages/testes/testes.component';
 import { RxjsComponent } from './pages/rxjs/rxjs.component';
+import { ObservablesComponent } from './pages/observables/observables.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,4 +22,5 @@ export const routes: Routes = [
   { path: 'signal', component: SinalsComponent },
   { path: 'testes', component: TestesComponent },
   { path: 'rxjs', component: RxjsComponent },
+  { path: 'observables', component: ObservablesComponent },
 ];
