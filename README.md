@@ -1,6 +1,3 @@
-Okay! Aqui está o resumo dos seus estudos em Angular, com emojis em todos os títulos para deixar mais visual.
-
----
 
 ## 📚 Resumo dos Estudos em Angular
 
